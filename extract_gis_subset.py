@@ -50,14 +50,21 @@ PRESETS: dict[str, dict] = {
         "kabupaten_names": None,
         "kecamatan_names": None,
         "roads_prefilter": b"Jakarta",
-        "expected": {"provinsi": 6, "kabupaten_kota": 6, "kecamatan": 44,
-                     "desa_kelurahan": 0, "roads": 37305},
+        "expected": {"provinsi": 6, "kabupaten_kota": 6, "kecamatan": 44, "roads": 37305},
+        # desa_kelurahan TIDAK diambil dari sumber ini: file nasional tidak punya
+        # baris Jakarta sama sekali. Diisi terpisah dari BIG oleh
+        # build_jakarta_kelurahan.py (267 kelurahan).
+        "skip_kinds": {"desa_kelurahan"},
+        "external": {
+            "desa_kelurahan.jakarta.json":
+                "BIG BATAS_DESAKEL_AR, KDPPUM='31' minus 1 baris placeholder = 267 kelurahan; "
+                "dibangun oleh build_jakarta_kelurahan.py",
+        },
         "caveat": (
-            "desa_kelurahan.json tidak memuat satu pun baris DKI Jakarta (0 dari 267 kelurahan). "
-            "Jakarta TIDAK punya desa (0) — wilayah terkecilnya kelurahan, dan file ini memang wadah "
-            "untuk kelurahan (.1xxx, 6.774 baris provinsi lain) maupun desa (.2xxx). Jadi angka 0 ini "
-            "adalah gap data sumber (level kelurahan tidak ikut ter-ingest), bukan bug filter: level "
-            "kecamatan Jakarta lengkap 44."
+            "desa_kelurahan: file nasional TIDAK memuat DKI Jakarta (0 dari 267 kelurahan) — "
+            "Jakarta memang tidak punya desa; wilayah terkecilnya kelurahan (.1xxx). Ini gap data "
+            "sumber, bukan bug filter (level kecamatan Jakarta lengkap 44). Sudah diisi dari BIG: "
+            "lihat desa_kelurahan.jakarta.json."
         ),
     },
     "cikarang": {
@@ -400,6 +407,15 @@ def main(argv=None) -> int:
     out_dir.mkdir(parents=True, exist_ok=True)
 
     kinds = args.only or [k for k, _, _ in COLLECTIONS] + ["roads"]
+    skip_kinds = p.get("skip_kinds") or set()
+    if args.only:
+        clash = [k for k in kinds if k in skip_kinds]
+        if clash:
+            raise SystemExit(
+                f"FATAL: preset '{p['key']}' tidak menyediakan {', '.join(clash)} dari sumber "
+                f"(lihat 'external' di presets)."
+            )
+    kinds = [k for k in kinds if k not in skip_kinds]
     sources = [DATA_DIR / fn for _, fn, _ in COLLECTIONS] + [DATA_DIR / ROADS[1]]
     missing = [q.name for q in sources if not q.is_file()]
     if missing:
@@ -451,6 +467,7 @@ def main(argv=None) -> int:
             "expected_match": p["expected"],
         },
         "caveat": p.get("caveat"),
+        "external": p.get("external"),
         "sources": [
             {"file": fn, "bytes": before[str(DATA_DIR / fn)][0],
              "mtime_ns": before[str(DATA_DIR / fn)][1],

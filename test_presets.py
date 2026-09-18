@@ -88,15 +88,19 @@ for desc, expect, preset, kind, feature in CASES:
     else:
         print(f"ok    [{preset['key']}] {desc}")
 
-# guard sanity: every preset needs an expected count for all 5 kinds
+# guard sanity: setiap preset harus mendefinisikan kelima kind, entah lewat
+# `expected` (diambil dari sumber) atau `skip_kinds` (dibangun eksternal).
 ALL = {"provinsi", "kabupaten_kota", "kecamatan", "desa_kelurahan", "roads"}
 for key, preset in PRESETS.items():
-    ok = set(preset["expected"]) == ALL
+    covered = set(preset["expected"]) | set(preset.get("skip_kinds") or set())
+    ok = covered == ALL
     if not ok:
         failed += 1
-        print(f"FAIL  preset '{key}' expected tidak lengkap: {sorted(preset['expected'])}")
+        print(f"FAIL  preset '{key}' cakupan kind tidak lengkap: {sorted(covered)}")
     else:
-        print(f"ok    preset '{key}' expected lengkap: {preset['expected']}")
+        ext = sorted(preset.get("skip_kinds") or [])
+        suffix = f" (+eksternal: {', '.join(ext)})" if ext else ""
+        print(f"ok    preset '{key}' cakupan lengkap: {preset['expected']}{suffix}")
 
 print(f"\n{'OK' if not failed else 'GAGAL'} ({len(CASES) + len(PRESETS) - failed}/{len(CASES) + len(PRESETS)} assertions)")
 sys.exit(1 if failed else 0)

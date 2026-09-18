@@ -13,11 +13,13 @@
       "provinsi": 6,
       "kabupaten_kota": 6,
       "kecamatan": 44,
-      "desa_kelurahan": 0,
       "roads": 37305
+    },
+    "kind_eksternal": {
+      "desa_kelurahan": "tidak tersedia di sumber (0 baris Jakarta); dibangun oleh build_jakarta_kelurahan.py dari BIG BATAS_DESAKEL_AR"
     }
   },
-  "caveat": "desa_kelurahan.json tidak memuat satu pun baris DKI Jakarta (0 dari 267 kelurahan). Jakarta TIDAK punya desa (0) — wilayah terkecilnya kelurahan, dan file ini memang wadah untuk kelurahan (.1xxx, 6.774 baris provinsi lain) maupun desa (.2xxx). Jadi angka 0 ini adalah gap data sumber (level kelurahan tidak ikut ter-ingest), bukan bug filter: level kecamatan Jakarta lengkap 44.",
+  "caveat": "desa_kelurahan: file nasional TIDAK memuat DKI Jakarta (0 dari 267 kelurahan). Jakarta memang tidak punya desa — wilayah terkecilnya kelurahan (.1xxx) — jadi ini gap data sumber, bukan bug filter (level kecamatan Jakarta lengkap 44). Sudah diisi dari BIG: 267 kelurahan.",
   "sources": [
     {
       "file": "provinsi.json",
@@ -39,13 +41,6 @@
       "mtime_ns": 1789706169991062800,
       "sha256": "3faf50cb29b94da5b2eee75a6a45fbfc6a4979bf95fd8edb6ad95daef5e4dd29",
       "features": 6932
-    },
-    {
-      "file": "desa_kelurahan.json",
-      "bytes": 2679387022,
-      "mtime_ns": 1789705048882053200,
-      "sha256": "7014bdac94d8ae5d8de372da9f73b5c3b3d1efd00b571163bd0568f3ab35ac76",
-      "features": 74000
     },
     {
       "file": "roads_indonesia_complete.json",
@@ -76,9 +71,10 @@
     },
     {
       "file": "desa_kelurahan.jakarta.json",
-      "bytes": 88,
-      "features": 0,
-      "seconds": 68.7
+      "bytes": 10157641,
+      "features": 267,
+      "seconds": null,
+      "source": "external:build_jakarta_kelurahan.py"
     },
     {
       "file": "roads.jakarta.json",
@@ -88,5 +84,25 @@
     }
   ],
   "runtime_seconds": 293.2,
-  "notes": "file sumber hanya dibaca (mode rb); tidak ada penulisan di luar folder output"
+  "notes": "file sumber hanya dibaca (mode rb); tidak ada penulisan di luar folder output",
+  "external": {
+    "desa_kelurahan.jakarta.json": {
+      "source": "BIG ArcGIS REST BATASWILAYAH/BATAS_DESAKEL_AR/MapServer/0, where KDPPUM='31'",
+      "builder": "build_jakarta_kelurahan.py",
+      "raw_rows": 268,
+      "dropped_placeholder": 1,
+      "features": 267,
+      "per_kabupaten_kota": {
+        "31.01": 6,
+        "31.71": 44,
+        "31.72": 31,
+        "31.73": 56,
+        "31.74": 65,
+        "31.75": 65
+      },
+      "kode_pos": "kosong (layer desa BIG tidak punya field kode pos; di file nasional diisi dari join terpisah)",
+      "lat_lng": "centroid poligon (shoelace cincin luar; MultiPolygon = rata-rata berbobot luas)",
+      "catatan": "snapshot BIG saat ini bisa beda dgn snapshot file nasional (36 kode Kab. Serang ada di BIG, tidak ada di file nasional)"
+    }
+  }
 }
