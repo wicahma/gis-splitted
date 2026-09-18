@@ -1,0 +1,87 @@
+{
+  "generated_at": "2026-09-18T16:39:26+07:00",
+  "scope": "provinsi-36-banten",
+  "predicate": {
+    "provinsi_kode": "36 Banten",
+    "kabupaten": "semua kabupaten/kota dengan kode_kemendagri.kabupaten berawalan '36.'",
+    "catatan": "kecamatan/desa difilter lewat kode_kemendagri (jumlah titik 2/3); roads lewat nama provinsi",
+    "expected_match": {
+      "provinsi": 8,
+      "kabupaten_kota": 8,
+      "kecamatan": 155,
+      "desa_kelurahan": 1516,
+      "roads": 20414
+    }
+  },
+  "sources": [
+    {
+      "file": "provinsi.json",
+      "bytes": 1915819382,
+      "mtime_ns": 1789706460927023600,
+      "sha256": "28d0d7292fee4ce62393aec3bebddb11507313518310800481057e202a88d127",
+      "features": 539
+    },
+    {
+      "file": "kabupaten_kota.json",
+      "bytes": 2284235836,
+      "mtime_ns": 1789705922315586200,
+      "sha256": "d0f64b48081788a63bebcdbd71ec7bad351580b7b176bc5b9da8dabef0fdcd01",
+      "features": 540
+    },
+    {
+      "file": "kecamatan.json",
+      "bytes": 2003906483,
+      "mtime_ns": 1789706169991062800,
+      "sha256": "3faf50cb29b94da5b2eee75a6a45fbfc6a4979bf95fd8edb6ad95daef5e4dd29",
+      "features": 6932
+    },
+    {
+      "file": "desa_kelurahan.json",
+      "bytes": 2679387022,
+      "mtime_ns": 1789705048882053200,
+      "sha256": "7014bdac94d8ae5d8de372da9f73b5c3b3d1efd00b571163bd0568f3ab35ac76",
+      "features": 74000
+    },
+    {
+      "file": "roads_indonesia_complete.json",
+      "bytes": 3837027109,
+      "mtime_ns": 1789706974315866000,
+      "sha256": "e31f7400e21bca251a321661760e5dea5c47071479d5c2ffe5a09637bfc54f16",
+      "features": 5588305
+    }
+  ],
+  "outputs": [
+    {
+      "file": "provinsi.banten.json",
+      "bytes": 23510856,
+      "features": 8,
+      "seconds": 53.3
+    },
+    {
+      "file": "kabupaten_kota.banten.json",
+      "bytes": 17293567,
+      "features": 8,
+      "seconds": 60.7
+    },
+    {
+      "file": "kecamatan.banten.json",
+      "bytes": 31822063,
+      "features": 155,
+      "seconds": 46.1
+    },
+    {
+      "file": "desa_kelurahan.banten.json",
+      "bytes": 62837231,
+      "features": 1516,
+      "seconds": 63.1
+    },
+    {
+      "file": "roads.banten.json",
+      "bytes": 14907802,
+      "features": 20414,
+      "seconds": 11.8
+    }
+  ],
+  "runtime_seconds": 235.0,
+  "notes": "file sumber hanya dibaca (mode rb); tidak ada penulisan di luar folder output"
+}

@@ -1,0 +1,102 @@
+{
+  "generated_at": "2026-09-18T17:03:27+07:00",
+  "preset": "cikarang",
+  "label": "Cikarang (5 kecamatan di Kab. Bekasi 32.16)",
+  "predicate": {
+    "provinsi_kode": "32 (Jawa Barat)",
+    "kabupaten_kode": [
+      "32.16"
+    ],
+    "kabupaten_nama": [
+      "Bekasi"
+    ],
+    "kecamatan": [
+      "Cikarang Barat",
+      "Cikarang Pusat",
+      "Cikarang Selatan",
+      "Cikarang Timur",
+      "Cikarang Utara"
+    ],
+    "catatan": "provinsi/kabupaten/kecamatan/desa difilter lewat kode_kemendagri; roads lewat nama",
+    "kode_bps_diabaikan": "kode_bps terbukti tidak akurat pada dataset ini (mis. berisi kode desa)",
+    "expected_match": {
+      "provinsi": 1,
+      "kabupaten_kota": 1,
+      "kecamatan": 5,
+      "desa_kelurahan": 43,
+      "roads": 1557
+    }
+  },
+  "caveat": null,
+  "sources": [
+    {
+      "file": "provinsi.json",
+      "bytes": 1915819382,
+      "mtime_ns": 1789706460927023600,
+      "sha256": "28d0d7292fee4ce62393aec3bebddb11507313518310800481057e202a88d127",
+      "features": 539
+    },
+    {
+      "file": "kabupaten_kota.json",
+      "bytes": 2284235836,
+      "mtime_ns": 1789705922315586200,
+      "sha256": "d0f64b48081788a63bebcdbd71ec7bad351580b7b176bc5b9da8dabef0fdcd01",
+      "features": 540
+    },
+    {
+      "file": "kecamatan.json",
+      "bytes": 2003906483,
+      "mtime_ns": 1789706169991062800,
+      "sha256": "3faf50cb29b94da5b2eee75a6a45fbfc6a4979bf95fd8edb6ad95daef5e4dd29",
+      "features": 6932
+    },
+    {
+      "file": "desa_kelurahan.json",
+      "bytes": 2679387022,
+      "mtime_ns": 1789705048882053200,
+      "sha256": "7014bdac94d8ae5d8de372da9f73b5c3b3d1efd00b571163bd0568f3ab35ac76",
+      "features": 74000
+    },
+    {
+      "file": "roads_indonesia_complete.json",
+      "bytes": 3837027109,
+      "mtime_ns": 1789706974315866000,
+      "sha256": "e31f7400e21bca251a321661760e5dea5c47071479d5c2ffe5a09637bfc54f16",
+      "features": 5588305
+    }
+  ],
+  "outputs": [
+    {
+      "file": "provinsi.cikarang.json",
+      "bytes": 766437,
+      "features": 1,
+      "seconds": 52.3
+    },
+    {
+      "file": "kabupaten_kota.cikarang.json",
+      "bytes": 1223344,
+      "features": 1,
+      "seconds": 60.5
+    },
+    {
+      "file": "kecamatan.cikarang.json",
+      "bytes": 335589,
+      "features": 5,
+      "seconds": 59.9
+    },
+    {
+      "file": "desa_kelurahan.cikarang.json",
+      "bytes": 830991,
+      "features": 43,
+      "seconds": 88.4
+    },
+    {
+      "file": "roads.cikarang.json",
+      "bytes": 1216431,
+      "features": 1557,
+      "seconds": 19.2
+    }
+  ],
+  "runtime_seconds": 280.5,
+  "notes": "file sumber hanya dibaca (mode rb); tidak ada penulisan di luar folder output"
+}

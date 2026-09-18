@@ -1,0 +1,88 @@
+{
+  "generated_at": "2026-09-18T12:51:23+07:00",
+  "scope": "bekasi",
+  "predicate": {
+    "provinsi": "32 Jawa Barat",
+    "kabupaten_kode": [
+      "32.16",
+      "32.75"
+    ],
+    "kabupaten_nama": [
+      "Bekasi",
+      "Kota Bekasi"
+    ],
+    "cikarang_kecamatan": null,
+    "catatan": "kecamatan/desa difilter lewat kode_kemendagri; roads lewat nama (tanpa kode)"
+  },
+  "sources": [
+    {
+      "file": "provinsi.json",
+      "bytes": 1915819382,
+      "mtime_ns": 1789706460927023600,
+      "sha256": "28d0d7292fee4ce62393aec3bebddb11507313518310800481057e202a88d127",
+      "features": 539
+    },
+    {
+      "file": "kabupaten_kota.json",
+      "bytes": 2284235836,
+      "mtime_ns": 1789705922315586200,
+      "sha256": "d0f64b48081788a63bebcdbd71ec7bad351580b7b176bc5b9da8dabef0fdcd01",
+      "features": 540
+    },
+    {
+      "file": "kecamatan.json",
+      "bytes": 2003906483,
+      "mtime_ns": 1789706169991062800,
+      "sha256": "3faf50cb29b94da5b2eee75a6a45fbfc6a4979bf95fd8edb6ad95daef5e4dd29",
+      "features": 6932
+    },
+    {
+      "file": "desa_kelurahan.json",
+      "bytes": 2679387022,
+      "mtime_ns": 1789705048882053200,
+      "sha256": "7014bdac94d8ae5d8de372da9f73b5c3b3d1efd00b571163bd0568f3ab35ac76",
+      "features": 74000
+    },
+    {
+      "file": "roads_indonesia_complete.json",
+      "bytes": 3837027109,
+      "mtime_ns": 1789706974315866000,
+      "sha256": "e31f7400e21bca251a321661760e5dea5c47071479d5c2ffe5a09637bfc54f16",
+      "features": 5588305
+    }
+  ],
+  "outputs": [
+    {
+      "file": "provinsi.bekasi-cikarang.json",
+      "bytes": 1316663,
+      "features": 2,
+      "seconds": 49.2
+    },
+    {
+      "file": "kabupaten_kota.bekasi-cikarang.json",
+      "bytes": 1914218,
+      "features": 2,
+      "seconds": 56.8
+    },
+    {
+      "file": "kecamatan.bekasi-cikarang.json",
+      "bytes": 3725468,
+      "features": 35,
+      "seconds": 43.9
+    },
+    {
+      "file": "desa_kelurahan.bekasi-cikarang.json",
+      "bytes": 7065226,
+      "features": 243,
+      "seconds": 63.2
+    },
+    {
+      "file": "roads.bekasi-cikarang.json",
+      "bytes": 10785762,
+      "features": 15784,
+      "seconds": 12.9
+    }
+  ],
+  "runtime_seconds": 226.0,
+  "notes": "file sumber hanya dibaca (mode rb); tidak ada penulisan di luar folder output"
+}

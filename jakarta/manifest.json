@@ -1,0 +1,92 @@
+{
+  "generated_at": "2026-09-18T16:58:46+07:00",
+  "preset": "jakarta",
+  "label": "DKI Jakarta (provinsi 31, seluruh kabupaten/kota)",
+  "predicate": {
+    "provinsi_kode": "31 (Daerah Khusus Ibukota Jakarta)",
+    "kabupaten_kode": "seluruh provinsi",
+    "kabupaten_nama": null,
+    "kecamatan": null,
+    "catatan": "provinsi/kabupaten/kecamatan/desa difilter lewat kode_kemendagri; roads lewat nama",
+    "kode_bps_diabaikan": "kode_bps terbukti tidak akurat pada dataset ini (mis. berisi kode desa)",
+    "expected_match": {
+      "provinsi": 6,
+      "kabupaten_kota": 6,
+      "kecamatan": 44,
+      "desa_kelurahan": 0,
+      "roads": 37305
+    }
+  },
+  "caveat": "desa_kelurahan.json tidak memuat satu pun baris DKI Jakarta (0 dari 267 kelurahan). Jakarta TIDAK punya desa (0) — wilayah terkecilnya kelurahan, dan file ini memang wadah untuk kelurahan (.1xxx, 6.774 baris provinsi lain) maupun desa (.2xxx). Jadi angka 0 ini adalah gap data sumber (level kelurahan tidak ikut ter-ingest), bukan bug filter: level kecamatan Jakarta lengkap 44.",
+  "sources": [
+    {
+      "file": "provinsi.json",
+      "bytes": 1915819382,
+      "mtime_ns": 1789706460927023600,
+      "sha256": "28d0d7292fee4ce62393aec3bebddb11507313518310800481057e202a88d127",
+      "features": 539
+    },
+    {
+      "file": "kabupaten_kota.json",
+      "bytes": 2284235836,
+      "mtime_ns": 1789705922315586200,
+      "sha256": "d0f64b48081788a63bebcdbd71ec7bad351580b7b176bc5b9da8dabef0fdcd01",
+      "features": 540
+    },
+    {
+      "file": "kecamatan.json",
+      "bytes": 2003906483,
+      "mtime_ns": 1789706169991062800,
+      "sha256": "3faf50cb29b94da5b2eee75a6a45fbfc6a4979bf95fd8edb6ad95daef5e4dd29",
+      "features": 6932
+    },
+    {
+      "file": "desa_kelurahan.json",
+      "bytes": 2679387022,
+      "mtime_ns": 1789705048882053200,
+      "sha256": "7014bdac94d8ae5d8de372da9f73b5c3b3d1efd00b571163bd0568f3ab35ac76",
+      "features": 74000
+    },
+    {
+      "file": "roads_indonesia_complete.json",
+      "bytes": 3837027109,
+      "mtime_ns": 1789706974315866000,
+      "sha256": "e31f7400e21bca251a321661760e5dea5c47071479d5c2ffe5a09637bfc54f16",
+      "features": 5588305
+    }
+  ],
+  "outputs": [
+    {
+      "file": "provinsi.jakarta.json",
+      "bytes": 3821936,
+      "features": 6,
+      "seconds": 50.1
+    },
+    {
+      "file": "kabupaten_kota.jakarta.json",
+      "bytes": 4395676,
+      "features": 6,
+      "seconds": 115.5
+    },
+    {
+      "file": "kecamatan.jakarta.json",
+      "bytes": 6481058,
+      "features": 44,
+      "seconds": 46.9
+    },
+    {
+      "file": "desa_kelurahan.jakarta.json",
+      "bytes": 88,
+      "features": 0,
+      "seconds": 68.7
+    },
+    {
+      "file": "roads.jakarta.json",
+      "bytes": 27881891,
+      "features": 37305,
+      "seconds": 11.9
+    }
+  ],
+  "runtime_seconds": 293.2,
+  "notes": "file sumber hanya dibaca (mode rb); tidak ada penulisan di luar folder output"
+}
